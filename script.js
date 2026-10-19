@@ -461,11 +461,11 @@ if (visitSection) {
   const visitHours = [
     { day: "Sun", open: null, close: null },
     { day: "Mon", open: null, close: null },
-    { day: "Tue", open: "10:30", close: "18:00" },
-    { day: "Wed", open: "10:30", close: "18:00" },
-    { day: "Thu", open: "10:30", close: "18:00" },
-    { day: "Fri", open: "10:30", close: "18:00" },
-    { day: "Sat", open: "10:30", close: "18:00" },
+    { day: "Tue", open: "11:00", close: "19:00" },
+    { day: "Wed", open: "11:00", close: "19:00" },
+    { day: "Thu", open: "11:00", close: "19:00" },
+    { day: "Fri", open: "11:00", close: "19:00" },
+    { day: "Sat", open: "11:00", close: "19:00" },
   ];
 
   const parseHour = (value) => {
