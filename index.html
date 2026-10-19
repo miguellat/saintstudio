@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>SAINTstudio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="vendor/model-viewer.min.js"></script>
+  </head>
+  <body class="home-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <main id="main-content">
+      <section class="sculpture-hero" aria-label="SAINTstudio introduction">
+        <header class="sculpture-header">
+          <nav class="sculpture-nav" aria-label="Primary">
+            <a href="barbershop.html">Barbershop</a>
+            <a href="creative-agency.html">Creative Agency</a>
+            <a href="team.html">Our Team</a>
+            <a href="apparel.html">Apparel</a>
+            <a href="contact.html">Contact</a>
+          </nav>
+          <a class="brand-wrap sculpture-brand" href="index.html" aria-label="SAINTstudio home">
+            <span class="brand"><strong>SAINT</strong><span>studio</span></span>
+          </a>
+        </header>
+
+        <div class="hero-composition">
+          <div class="sculpture-stage" aria-hidden="true">
+            <model-viewer
+              class="hero-model"
+              src="3d-models/logo.glb"
+              alt=""
+              auto-rotate
+              auto-rotate-delay="0"
+              rotation-per-second="8deg"
+              camera-orbit="90deg 70deg 92%"
+              exposure="0.8"
+              shadow-intensity="0"
+              interaction-prompt="none"
+              loading="eager"
+            ></model-viewer>
+          </div>
+
+          <div class="hero-center reveal">
+            <a class="hero-book-button" href="https://getsquire.com/booking/brands/saint-studio">Book Now</a>
+          </div>
+        </div>
+
+        <a class="hero-scroll-cue" href="#visit" aria-label="Scroll to visit information">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path d="M12 4v14" />
+            <path d="m6 12 6 6 6-6" />
+          </svg>
+        </a>
+      </section>
+
+      <section class="visit-section" id="visit">
+        <div class="container visit-section__inner">
+          <div class="visit-section__head reveal">
+            <h2>The Visit</h2>
+          </div>
+
+          <div class="visit-section__body">
+            <div class="visit-section__list reveal" role="tablist" aria-label="Visit information">
+              <button class="visit-entry is-active" type="button" data-visit-entry="01" role="tab" aria-selected="true" aria-controls="visit-panel-01" id="visit-tab-01">
+                <span class="visit-entry__num">01</span>
+                <span class="visit-entry__copy">
+                  <span class="visit-entry__title">The Address</span>
+                  <span class="visit-entry__preview">1154 Morningside Ave</span>
+                </span>
+                <span class="visit-entry__toggle" aria-hidden="true">+</span>
+              </button>
+
+              <button class="visit-entry" type="button" data-visit-entry="02" role="tab" aria-selected="false" aria-controls="visit-panel-02" id="visit-tab-02">
+                <span class="visit-entry__num">02</span>
+                <span class="visit-entry__copy">
+                  <span class="visit-entry__title">The Hours</span>
+                  <span class="visit-entry__preview">Tue-Sat availability</span>
+                </span>
+                <span class="visit-entry__toggle" aria-hidden="true">+</span>
+              </button>
+
+              <button class="visit-entry" type="button" data-visit-entry="03" role="tab" aria-selected="false" aria-controls="visit-panel-03" id="visit-tab-03">
+                <span class="visit-entry__num">03</span>
+                <span class="visit-entry__copy">
+                  <span class="visit-entry__title">Getting Here</span>
+                  <span class="visit-entry__preview">TTC 116, parking on Milner Ave</span>
+                </span>
+                <span class="visit-entry__toggle" aria-hidden="true">+</span>
+              </button>
+
+              <button class="visit-entry" type="button" data-visit-entry="04" role="tab" aria-selected="false" aria-controls="visit-panel-04" id="visit-tab-04">
+                <span class="visit-entry__num">04</span>
+                <span class="visit-entry__copy">
+                  <span class="visit-entry__title">Reach Us</span>
+                  <span class="visit-entry__preview">saintstudiotoronto@gmail.com</span>
+                </span>
+                <span class="visit-entry__toggle" aria-hidden="true">+</span>
+              </button>
+
+              <button class="visit-entry" type="button" data-visit-entry="05" role="tab" aria-selected="false" aria-controls="visit-panel-05" id="visit-tab-05">
+                <span class="visit-entry__num">05</span>
+                <span class="visit-entry__copy">
+                  <span class="visit-entry__title">Book Appointment</span>
+                  <span class="visit-entry__preview">Reserve your slot</span>
+                </span>
+                <span class="visit-entry__toggle" aria-hidden="true">+</span>
+              </button>
+            </div>
+
+            <div class="visit-section__pane reveal">
+              <svg class="visit-map" viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="visit-map-title">
+                <title id="visit-map-title">Abstract map marker for SAINTstudio at 1154 Morningside Ave</title>
+                <rect width="680" height="400" fill="var(--bg)" />
+                <g data-visit-dotgrid></g>
+                <line x1="0" y1="238" x2="680" y2="238" stroke="currentColor" stroke-width="20" opacity="0.06" />
+                <line x1="140" y1="400" x2="620" y2="0" stroke="currentColor" stroke-width="16" opacity="0.06" />
+                <g fill="none" stroke="currentColor" stroke-dasharray="2 4">
+                  <circle cx="381" cy="208" r="60" stroke-width="0.6" opacity="0.48" />
+                  <circle cx="381" cy="208" r="130" stroke-width="0.6" opacity="0.3" />
+                  <circle cx="381" cy="208" r="210" stroke-width="0.6" opacity="0.16" />
+                </g>
+                <line x1="0" y1="208" x2="680" y2="208" stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+                <line x1="381" y1="0" x2="381" y2="400" stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+                <g class="visit-map__tiny" fill="currentColor" opacity="0.5">
+                  <text x="446" y="203">60M</text>
+                  <text x="516" y="203">130M</text>
+                  <text x="596" y="203">210M</text>
+                  <text x="14" y="22">43.7980 N</text>
+                  <text x="666" y="22" text-anchor="end">079.2186 W</text>
+                  <text x="14" y="388">SCARBOROUGH</text>
+                  <text x="666" y="388" text-anchor="end">TORONTO ON</text>
+                </g>
+                <circle class="visit-map__pulse" cx="381" cy="208" r="22" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5" />
+                <circle cx="381" cy="208" r="14" fill="none" stroke="currentColor" stroke-width="1" />
+                <circle cx="381" cy="208" r="6" fill="currentColor" />
+                <g fill="currentColor">
+                  <text class="visit-map__brand" x="351" y="258">SAINTstudio</text>
+                  <text class="visit-map__address" x="351" y="274">1154 MORNINGSIDE AVE</text>
+                </g>
+              </svg>
+
+              <div class="visit-detail">
+                <div class="visit-detail__meta">Entry <span data-current-visit-entry>01</span> / 05</div>
+
+                <div class="visit-panel is-active" id="visit-panel-01" data-visit-panel="01" role="tabpanel" aria-labelledby="visit-tab-01">
+                  <div class="visit-address">
+                    <h3>1154 Morningside Ave</h3>
+                    <p>Scarborough, Ontario &middot; Postal M1B 5J3 &middot; Canada</p>
+                    <div class="visit-actions">
+                      <button class="visit-pill" type="button" data-copy="1154 Morningside Ave, Scarborough, ON M1B 5J3">
+                        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true">
+                          <rect x="1.5" y="1.5" width="6.5" height="6.5" />
+                          <rect x="4" y="4" width="6.5" height="6.5" />
+                        </svg>
+                        <span>Copy address</span>
+                      </button>
+                      <a class="visit-pill" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=1154+Morningside+Ave,+Scarborough,+ON">Open in Maps</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="visit-panel" id="visit-panel-02" data-visit-panel="02" role="tabpanel" aria-labelledby="visit-tab-02" hidden>
+                  <div class="visit-hours" data-visit-hours-grid></div>
+                </div>
+
+                <div class="visit-panel" id="visit-panel-03" data-visit-panel="03" role="tabpanel" aria-labelledby="visit-tab-03" hidden>
+                  <div class="visit-transit">
+                    <div class="visit-transit__row">
+                      <span>Bus</span>
+                      <div>
+                        <strong>TTC 116 Morningside</strong>
+                        <p>Stops close to the studio with frequent weekday service.</p>
+                      </div>
+                    </div>
+                    <div class="visit-transit__row">
+                      <span>Car</span>
+                      <div>
+                        <strong>Street parking nearby</strong>
+                        <p>Check Milner Ave and nearby side streets before your appointment.</p>
+                      </div>
+                    </div>
+                    <div class="visit-transit__row">
+                      <span>GO</span>
+                      <div>
+                        <strong>Agincourt or Guildwood GO Station</strong>
+                        <p>Connect by car or local transit from the station.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="visit-panel" id="visit-panel-04" data-visit-panel="04" role="tabpanel" aria-labelledby="visit-tab-04" hidden>
+                  <div class="visit-reach">
+                    <div>
+                      <span>Email</span>
+                      <a href="mailto:saintstudiotoronto@gmail.com">saintstudiotoronto@gmail.com</a>
+                    </div>
+                    <div>
+                      <span>Instagram</span>
+                      <a href="https://www.instagram.com/saintstudio.to/" target="_blank" rel="noopener">@saintstudio.to</a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="visit-panel" id="visit-panel-05" data-visit-panel="05" role="tabpanel" aria-labelledby="visit-tab-05" hidden>
+                  <div class="visit-book">
+                    <p>Pick a member, pick a time. Book online with Squire to keep the seat yours.</p>
+                    <div class="visit-actions">
+                      <a class="visit-pill is-dark" href="https://getsquire.com/booking/brands/saint-studio">Book Now</a>
+                      <a class="visit-pill" href="team.html">Our Team</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>SAINT</strong>studio</div>
+        <div class="footer-copy">1154 Morningside Ave &middot; Toronto, Ontario</div>
+        <div class="footer-socials">
+          <a class="icon-link" href="https://www.instagram.com/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a class="icon-link" href="mailto:hello@saintstudio.ca" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 6h16v12H4z" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

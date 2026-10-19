@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="manifest" href="site.webmanifest" />
+    <title>Barber Profile | SAINTstudio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </button>
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="index.html">Home</a>
+          <a href="barbershop.html">Barbershop</a>
+          <a href="creative-agency.html">Creative Agency</a>
+          <a href="team.html" aria-current="page">Our Team</a>
+          <a href="apparel.html">Apparel</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+        <a class="brand-wrap" href="index.html" aria-label="SAINTstudio home">
+          <span class="brand"><strong>SAINT</strong><span>studio</span></span>
+        </a>
+        <div class="header-actions">
+          <a class="icon-link" href="https://www.instagram.com/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a class="icon-link" href="mailto:hello@saintstudio.ca" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 6h16v12H4z" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="mobile-panel" data-mobile-panel>
+        <nav class="mobile-nav" aria-label="Mobile">
+          <a href="index.html">Home</a>
+          <a href="barbershop.html">Barbershop</a>
+          <a href="creative-agency.html">Creative Agency</a>
+          <a href="team.html" aria-current="page">Our Team</a>
+          <a href="apparel.html">Apparel</a>
+          <a href="contact.html">Contact Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="barber-profile-page" data-barber-profile>
+      <section class="profile-hero">
+        <div class="container profile-hero-grid">
+          <div class="profile-hero-copy reveal">
+            <h1 class="profile-name" data-profile-name>
+              <span>Joshua</span>
+              <span>Lat</span>
+            </h1>
+            <p class="profile-role" data-profile-role>Co-owner / Master Barber</p>
+            <p class="profile-description" data-profile-description>Clean structure, steady detail, and a finish that feels considered from every angle.</p>
+            <div class="profile-actions">
+              <a class="profile-book-button" data-profile-book href="https://getsquire.com/booking/book/saint-studio-toronto/barber/jolo-lat/services">Book Joshua</a>
+              <a class="profile-instagram-button" data-profile-instagram href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+            </div>
+          </div>
+          <figure class="profile-portrait reveal">
+            <img data-profile-portrait src="assets/images/Joshua-Lat.webp" alt="Portrait of Joshua Lat" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="section barber-story-section">
+        <div class="container barber-story-grid">
+          <div class="barber-story-heading reveal">
+            <p class="eyebrow">About</p>
+            <h2 data-profile-about-heading>Fades, scissors, and everything in between.</h2>
+          </div>
+          <div class="barber-story-copy reveal" data-profile-about>
+            <p>Fades, scissors, and everything in between. Joshua's work is built on experience and precision, delivering clean, tailored cuts shaped by nearly a decade behind the chair.</p>
+            <p>Expect a sharp finish, steady hands, and a chair you can trust every time. Book Joshua when you want to walk out feeling fresh, every visit.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section barber-feature-section">
+        <div class="barber-feature-scroll" data-barber-gallery></div>
+      </section>
+
+      <nav class="profile-adjacent" aria-label="Barber profiles">
+        <div class="container profile-adjacent-inner">
+          <a class="profile-adjacent-link profile-adjacent-link--prev" data-profile-prev href="barber-profile.html?barber=gabriel-lat">
+            <span>Previous Barber</span>
+            <strong data-profile-prev-name>Gabriel Lat</strong>
+          </a>
+          <a class="profile-adjacent-link profile-adjacent-link--next" data-profile-next href="barber-profile.html?barber=miguel-lat">
+            <span>Next Barber</span>
+            <strong data-profile-next-name>Miguel Lat</strong>
+          </a>
+        </div>
+      </nav>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand"><strong>SAINT</strong>studio</div>
+        <div class="footer-copy">1154 Morningside Ave &middot; Toronto, Ontario</div>
+        <div class="footer-socials">
+          <a class="icon-link" href="https://www.instagram.com/saintstudio.to/" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4.2" />
+              <circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none" />
+            </svg>
+          </a>
+          <a class="icon-link" href="mailto:hello@saintstudio.ca" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 6h16v12H4z" />
+              <path d="m4 7 8 6 8-6" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
