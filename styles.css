@@ -1964,7 +1964,7 @@ dialog::backdrop {
   }
 
   .sculpture-nav {
-    max-width: 64vw;
+    max-width: calc(100% - 190px);
     gap: 14px 20px;
   }
 
