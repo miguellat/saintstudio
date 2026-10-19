@@ -19,7 +19,7 @@ const barberProfiles = [
     name: "Joshua Lat",
     role: "Co-owner",
     portrait: "assets/images/Joshua-Lat.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/jolo-lat/services",
     description: "The other half of SAINT Studio, co-owning the brand alongside his brother. With 8+ years behind the chair, he's a master of both fades and scissor work -- the kind of barber you can always count on to leave you feeling fresh.",
     aboutHeading: "Co-owner of SAINT Studio, master barber, and 8+ years deep in the craft.",
@@ -28,7 +28,7 @@ const barberProfiles = [
       "Expect a sharp finish, steady hands, and a chair you can trust every time. Book Joshua when you want to walk out feeling fresh, every visit.",
     ],
     gallery: [
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Textured fade haircut detail", caption: "Mid fade, textured top" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Textured fade haircut detail", caption: "Mid fade, textured top" },
       { type: "video", src: "assets/images/migi-cut.mp4", alt: "Clipper work during a haircut", caption: "Modern mullet, scissor finish" },
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Finished cut in the barbershop", caption: "Classic shape, clean taper" },
     ],
@@ -40,7 +40,7 @@ const barberProfiles = [
     name: "Miguel Lat",
     role: "Co-owner",
     portrait: "assets/images/Miguel-Lat.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/migi-lat/services",
     description: "One of the two owners of SAINT Studio, building the brand alongside his brother. A young creative with skill to match his vision, he's mastered both the craft of cutting hair and the art of creating content -- bringing a rare blend of precision and creativity to everything he touches.",
     aboutHeading: "Co-owner of SAINT Studio, barber, and creative -- building the brand from the chair up alongside his brother.",
@@ -50,7 +50,7 @@ const barberProfiles = [
     ],
     gallery: [
       { type: "video", src: "assets/images/migi-cut.mp4", alt: "Haircut in progress with clippers", caption: "Low taper, clean blend" },
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Fade haircut close-up", caption: "Skin fade, soft texture" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Fade haircut close-up", caption: "Skin fade, soft texture" },
       { type: "image", src: "assets/images/barber-tools.webp", alt: "Barber tools on a workstation", caption: "Detail work, lined finish" },
     ],
   },
@@ -61,7 +61,7 @@ const barberProfiles = [
     name: "Luis Nunag",
     role: "Member",
     portrait: "assets/images/Luis-Nunag.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/luis-nunag/services",
     description: "A true veteran of the craft and the core of SAINT Studio. Always locked in, always consistent -- Luis is a master at fades, scissors, and the kind of conversations that make the chair feel like home.",
     aboutHeading: "Veteran barber, steady presence, and the core of SAINT Studio.",
@@ -72,7 +72,7 @@ const barberProfiles = [
     gallery: [
       { type: "video", src: "assets/images/nunag-cut.mp4", alt: "Finished haircut shown in profile", caption: "Scissor shape, natural flow" },
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Modern barbershop haircut detail", caption: "Balanced taper, soft finish" },
-      { type: "image", src: "assets/images/gallery-interior.webp", alt: "Barbershop chair and mirror", caption: "Chair-ready detail" },
+      { type: "image", src: "assets/images/barbershop.jpg", alt: "Barbershop chair and mirror", caption: "Chair-ready detail" },
     ],
   },
   {
@@ -82,7 +82,7 @@ const barberProfiles = [
     name: "Ash Nadeem",
     role: "Member",
     portrait: "assets/images/Ash-Nadeem.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/ash-nadeem/services",
     description: "A curated look at Ash's craft -- sharp scissor work, seamless fades, and the small details that set every cut apart.",
     aboutHeading: "Precision barber, scissor specialist, and one of the sharpest hands at SAINT Studio.",
@@ -91,7 +91,7 @@ const barberProfiles = [
       "Expect a calm chair, honest input, and a finish that holds its shape long after you leave. Book Ash when the details matter.",
     ],
     gallery: [
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Detailed fade haircut", caption: "Sharp fade, beard balance" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Detailed fade haircut", caption: "Sharp fade, beard balance" },
       { type: "image", src: "assets/images/barber-tools.webp", alt: "Barber tools arranged neatly", caption: "Line work and finish" },
       { type: "image", src: "assets/images/clippers.png", alt: "Clipper tools on a surface", caption: "Precision setup" },
     ],
@@ -103,7 +103,7 @@ const barberProfiles = [
     name: "JP Dela Cruz",
     role: "Member",
     portrait: "assets/images/JP-Dela.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/jp-dela-cruz-1/services",
     description: "A creative barber with over 10 years behind the chair. Known for his eye for style and his easygoing energy, JP brings both craft and character to every cut -- making the experience as memorable as the finish.",
     aboutHeading: "Creative barber, 10+ years in the game, and one of the most welcoming chairs at SAINT Studio.",
@@ -114,7 +114,7 @@ const barberProfiles = [
     gallery: [
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Finished barbershop cut", caption: "Editorial shape, clean finish" },
       { type: "image", src: "assets/images/product-photography.jpg", alt: "Studio product photography setup", caption: "Visual direction" },
-      { type: "image", src: "assets/images/gallery-interior.webp", alt: "Minimal barbershop interior", caption: "Studio polish" },
+      { type: "image", src: "assets/images/barbershop.jpg", alt: "Minimal barbershop interior", caption: "Studio polish" },
     ],
   },
   {
@@ -124,7 +124,7 @@ const barberProfiles = [
     name: "Justin Estrella",
     role: "Member",
     portrait: "assets/images/Justin-Estrella.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/justin-estrella-1/services",
     description: "A young, ambitious barber with serious talent and speed to match. Quick hands, sharp eye, and a drive to keep leveling up -- every cut reflects the hunger behind it.",
     aboutHeading: "Young, talented, and one of the fastest-rising barbers at SAINT Studio.",
@@ -133,7 +133,7 @@ const barberProfiles = [
       "Expect an efficient chair, a fresh finish, and the energy of a barber who's just getting started. Book Justin when you want quality without the wait.",
     ],
     gallery: [
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Clean fade haircut detail", caption: "Wearable fade, soft top" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Clean fade haircut detail", caption: "Wearable fade, soft top" },
       { type: "video", src: "assets/images/nunag-cut.mp4", alt: "Haircut detail shown in profile", caption: "Textured finish" },
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Finished haircut in the studio", caption: "Balanced everyday shape" },
     ],
@@ -145,7 +145,7 @@ const barberProfiles = [
     name: "Gabriel Lat",
     role: "Member",
     portrait: "assets/images/Gabriel-Lat.webp",
-    instagram: "https://www.instagram.com/",
+    instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/gabe-lat/services",
     description: "\"The Process\" -- is the youngest of the Lat brothers and the up-and-coming force at SAINT Studio. Already delivering fresh fades and razor-sharp line ups, Gabriel brings a rare mix of vision and craft to every cut, proving talent runs in the family.",
     aboutHeading: "The youngest of the brothers, known around the studio as \"The Process\" -- the next chapter of SAINT Studio in the making.",
@@ -155,7 +155,7 @@ const barberProfiles = [
     ],
     gallery: [
       { type: "image", src: "assets/images/barber-tools.webp", alt: "Tools prepared for a barber service", caption: "Beard detail, clean line" },
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Fade haircut close-up", caption: "Polished transition" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Fade haircut close-up", caption: "Polished transition" },
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Finished haircut detail", caption: "Complete finish" },
     ],
   },
@@ -175,7 +175,7 @@ const barberProfiles = [
       "Expect a clean finish, good conversation, and a chair that feels like home from the first visit. Book Kevin when you want a fresh cut from the newest face at SAINT Studio.",
     ],
     gallery: [
-      { type: "image", src: "assets/images/gallery-fade.webp", alt: "Fade haircut close-up", caption: "Clean fade" },
+      { type: "image", src: "assets/images/clippers.png", alt: "Fade haircut close-up", caption: "Clean fade" },
       { type: "image", src: "assets/images/gallery-cut.webp", alt: "Finished haircut detail", caption: "Complete finish" },
       { type: "image", src: "assets/images/barber-tools.webp", alt: "Tools prepared for a barber service", caption: "Precision setup" },
     ],
@@ -215,7 +215,8 @@ function renderBarberProfile() {
   bookButton.href = profile.bookingUrl;
 
   const instagramButton = profilePage.querySelector("[data-profile-instagram]");
-  instagramButton.href = profile.instagram;
+  instagramButton.hidden = !profile.instagram;
+  if (profile.instagram) instagramButton.href = profile.instagram;
 
   const about = profilePage.querySelector("[data-profile-about]");
   about.textContent = "";
@@ -406,14 +407,36 @@ function setupHorizontalScroll(scroller) {
 
 document.querySelectorAll(".barber-feature-scroll, [data-horizontal-scroll]").forEach(setupHorizontalScroll);
 
+// Set this to a form service URL (Formspree, Web3Forms, etc.) to send inquiries
+// straight to your inbox. Until then, forms open the visitor's email app.
+const FORM_ENDPOINT = "";
+const FORM_EMAIL = "saintstudiotoronto@gmail.com";
+
 document.querySelectorAll("[data-demo-form]").forEach((form) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const note = form.querySelector("[data-form-note]");
-    if (note) {
-      note.textContent = form.dataset.success || "Thanks — your request has been received.";
+    const data = new FormData(form);
+    const say = (text) => {
+      if (note) note.textContent = text;
+    };
+
+    if (FORM_ENDPOINT) {
+      try {
+        const response = await fetch(FORM_ENDPOINT, { method: "POST", body: data, headers: { Accept: "application/json" } });
+        if (!response.ok) throw new Error("Request failed");
+        say(form.dataset.success || "Thanks — your message has been sent.");
+        form.reset();
+      } catch (error) {
+        say(`Something went wrong. Please email us at ${FORM_EMAIL}.`);
+      }
+      return;
     }
-    form.reset();
+
+    const lines = [...data.entries()].map(([key, value]) => `${key}: ${value}`);
+    const subject = encodeURIComponent(`SAINTstudio inquiry from ${data.get("name") || "website"}`);
+    window.location.href = `mailto:${FORM_EMAIL}?subject=${subject}&body=${encodeURIComponent(lines.join("\n"))}`;
+    say("Opening your email app. If nothing opens, email us at " + FORM_EMAIL + ".");
   });
 });
 

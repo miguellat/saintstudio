@@ -1507,6 +1507,70 @@ button.portfolio-card {
   text-transform: uppercase;
 }
 
+.hub-section {
+  padding: clamp(56px, 8vw, 110px) 0 clamp(24px, 4vw, 48px);
+}
+
+.hub-head h2 {
+  margin: 0 0 28px;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 18px;
+}
+
+.hub-card {
+  display: block;
+  color: inherit;
+}
+
+.hub-card img,
+.hub-card .apparel-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  transition: transform 220ms ease;
+}
+
+.hub-card:hover img,
+.hub-card:focus-visible img {
+  transform: scale(1.03);
+}
+
+.hub-card h3 {
+  margin: 14px 0 4px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.hub-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.pack-grid {
+  grid-template-columns: repeat(2, minmax(0, 340px));
+}
+
+.barber-hero-copy .solid-button,
+.barber-closing-statement .solid-button {
+  margin-top: 24px;
+}
+
+@media (max-width: 720px) {
+  .hub-grid,
+  .pack-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .barber-profile-page {
   background: var(--bg);
 }
@@ -2416,4 +2480,8 @@ dialog::backdrop {
     opacity: 1;
     transform: none;
   }
+}
+
+.profile-instagram-button[hidden] {
+  display: none;
 }

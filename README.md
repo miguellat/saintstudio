@@ -30,6 +30,7 @@ http://localhost:8000
 
 - `index.html`
 - `barbershop.html`
-- `creative-agency.html`
+- `creative.html`
 - `team.html`
+- `apparel.html`
 - `contact.html`
