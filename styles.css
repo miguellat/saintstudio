@@ -1571,6 +1571,30 @@ button.portfolio-card {
   }
 }
 
+.crew-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+}
+
+.crew-photo {
+  margin: 0;
+}
+
+.crew-photo img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 720px) {
+  .crew-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .barber-profile-page {
   background: var(--bg);
 }
