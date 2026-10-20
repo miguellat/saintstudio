@@ -3313,3 +3313,7 @@ body.cart-open {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.reviews-section .ghost-button {
+  margin: 0 12px 12px 0;
+}
