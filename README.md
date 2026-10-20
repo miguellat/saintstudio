@@ -30,7 +30,10 @@ http://localhost:8000
 
 - `index.html`
 - `barbershop.html`
-- `creative.html`
 - `team.html`
 - `apparel.html`
 - `contact.html`
+
+## Archived
+
+`archive/creative.html` is the Saint Creative page, taken out of the site navigation for now. To bring it back, move it to the project root, remove the `../` prefixes on its paths, and re-add the nav links and homepage card.
