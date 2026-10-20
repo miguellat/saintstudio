@@ -1556,7 +1556,7 @@ button.portfolio-card {
 }
 
 .pack-grid {
-  grid-template-columns: repeat(3, minmax(0, 340px));
+  grid-template-columns: repeat(2, minmax(0, 340px));
 }
 
 .barber-hero-copy .solid-button,
@@ -3148,4 +3148,41 @@ body.cart-open {
 .footer-contact[aria-current="page"] {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.pack-card__media {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  background: #0a0a0a;
+  color: #fff;
+  transition: transform 220ms ease;
+}
+
+.pack-card:hover .pack-card__media,
+.pack-card:focus-visible .pack-card__media {
+  transform: scale(1.02);
+}
+
+.pack-card__badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.pack-card__title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.95;
 }
