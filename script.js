@@ -692,7 +692,7 @@ if (visitSection) {
 
 // Analytics (Google Analytics 4). Paste the Measurement ID (looks like G-XXXXXXXXXX)
 // to turn it on. While it is empty nothing is loaded or tracked.
-const GA_MEASUREMENT_ID = "";
+const GA_MEASUREMENT_ID = "G-S2LTW5BMW6";
 
 if (GA_MEASUREMENT_ID) {
   const gaScript = document.createElement("script");
