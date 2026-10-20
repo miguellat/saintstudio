@@ -1,9 +1,9 @@
-# Joshua Lat
+# Jolo Lat
 The other half of SAINT Studio, co-owning the brand alongside his brother. With 8+ years behind the chair, he's a master of both fades and scissor work — the kind of barber you can always count on to leave you feeling fresh.
 
 Co-owner of SAINT Studio, master barber, and 8+ years deep in the craft.
-Fades, scissors, and everything in between. Joshua's work is built on experience and precision, delivering clean, tailored cuts shaped by nearly a decade behind the chair.
-Expect a sharp finish, steady hands, and a chair you can trust every time. Book Joshua when you want to walk out feeling fresh, every visit.
+Fades, scissors, and everything in between. Jolo's work is built on experience and precision, delivering clean, tailored cuts shaped by nearly a decade behind the chair.
+Expect a sharp finish, steady hands, and a chair you can trust every time. Book Jolo when you want to walk out feeling fresh, every visit.
 
 # Miguel Lat
 One of the two owners of SAINT Studio, building the brand alongside his brother. A young creative with skill to match his vision, he's mastered both the craft of cutting hair and the art of creating content — bringing a rare blend of precision and creativity to everything he touches.

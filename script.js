@@ -13,19 +13,19 @@ if (menuToggle && mobilePanel) {
 
 const barberProfiles = [
   {
-    slug: "joshua-lat",
-    first: "Joshua",
+    slug: "jolo-lat",
+    first: "Jolo",
     last: "Lat",
-    name: "Joshua Lat",
+    name: "Jolo Lat",
     role: "Co-owner",
-    portrait: "assets/images/Joshua-Lat.jpg",
+    portrait: "assets/images/Jolo-Lat.jpg",
     instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/jolo-lat/services",
     description: "The other half of SAINT Studio, co-owning the brand alongside his brother. With 8+ years behind the chair, he's a master of both fades and scissor work -- the kind of barber you can always count on to leave you feeling fresh.",
     aboutHeading: "Co-owner of SAINT Studio, master barber, and 8+ years deep in the craft.",
     about: [
-      "Fades, scissors, and everything in between. Joshua's work is built on experience and precision, delivering clean, tailored cuts shaped by nearly a decade behind the chair.",
-      "Expect a sharp finish, steady hands, and a chair you can trust every time. Book Joshua when you want to walk out feeling fresh, every visit.",
+      "Fades, scissors, and everything in between. Jolo's work is built on experience and precision, delivering clean, tailored cuts shaped by nearly a decade behind the chair.",
+      "Expect a sharp finish, steady hands, and a chair you can trust every time. Book Jolo when you want to walk out feeling fresh, every visit.",
     ],
     gallery: [
       { type: "image", src: "assets/images/clippers.png", alt: "Textured fade haircut detail", caption: "Mid fade, textured top" },
