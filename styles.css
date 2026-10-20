@@ -3222,3 +3222,94 @@ body.cart-open {
   letter-spacing: -0.05em;
   line-height: 0.95;
 }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.services-note {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.service-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.3));
+}
+
+.service-row h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.service-row p {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.service-row__time {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.service-row__price {
+  white-space: nowrap;
+}
+
+.services-cta {
+  margin-top: 2rem;
+}
+
+.reviews-section h2 {
+  margin: 0;
+}
+
+.reviews-stars {
+  font-size: 0.6em;
+  letter-spacing: 0.1em;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 560px);
+  gap: 18px;
+  margin: 2rem 0;
+}
+
+.review-card {
+  margin: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--line, rgba(128, 128, 128, 0.3));
+  border-radius: 12px;
+}
+
+.review-card p {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.review-card cite {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: normal;
+}
+
+@media (max-width: 760px) {
+  .services-grid,
+  .review-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
