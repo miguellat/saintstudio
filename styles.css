@@ -3137,3 +3137,15 @@ body.cart-open {
   border-radius: var(--radius-sm);
   color: var(--muted);
 }
+
+.footer-contact {
+  margin-right: 6px;
+  font-size: 0.94rem;
+}
+
+.footer-contact:hover,
+.footer-contact:focus-visible,
+.footer-contact[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
