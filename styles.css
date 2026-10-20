@@ -3124,3 +3124,16 @@ body.cart-open {
 .creative-intro-section .media-card img {
   object-position: 50% 82%;
 }
+
+.pickup-note {
+  margin: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+}
+
+.pickup-note--product {
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+}

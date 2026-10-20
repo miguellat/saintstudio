@@ -91,8 +91,8 @@
       "",
       `Subtotal: ${formatMoney(subtotal())} CAD`,
       "",
+      "Pickup: SAINT Studio, 1154 Morningside Ave, Scarborough",
       "Name:",
-      "Shipping address:",
     ].join("\n");
     window.location.href = `mailto:${CHECKOUT_EMAIL}?subject=${encodeURIComponent("Saint Apparel order")}&body=${encodeURIComponent(body)}`;
   };
@@ -202,7 +202,7 @@
 
     const row = el("div", "cart-subtotal");
     row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const note = el("p", "cart-note", "Online checkout is coming soon. For now, we'll email you to confirm your order, shipping, and payment.");
+    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave, Scarborough. Online checkout is coming soon, so for now send your order by email and we'll confirm payment and pickup.");
     const checkoutButton = el("button", "solid-button cart-checkout", "Send Order by Email");
     checkoutButton.type = "button";
     checkoutButton.addEventListener("click", checkout);
