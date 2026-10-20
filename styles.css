@@ -3393,3 +3393,56 @@ body.cart-open {
   line-height: 1;
   cursor: pointer;
 }
+
+.drop-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.drop-copy {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.drop-form__row {
+  display: flex;
+  gap: 12px;
+}
+
+.drop-form__row input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.drop-form__trap {
+  position: absolute;
+  left: -9999px;
+}
+
+@media (max-width: 760px) {
+  .drop-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .drop-form__row {
+    flex-direction: column;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
