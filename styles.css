@@ -3358,3 +3358,38 @@ body.cart-open {
 .detail-row a {
   color: inherit;
 }
+
+.announcement-bar {
+  position: relative;
+  padding: 0.6rem 2.75rem;
+  background: #0a0a0a;
+  color: #ffffff;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.announcement-bar p {
+  margin: 0;
+}
+
+.announcement-bar a {
+  margin-left: 0.4rem;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.announcement-bar__close {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}

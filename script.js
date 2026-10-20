@@ -714,3 +714,55 @@ if (GA_MEASUREMENT_ID) {
     else if (href.startsWith("tel:")) window.gtag("event", "call_click");
   });
 }
+
+
+// Announcement bar shown at the top of every page. Set ANNOUNCEMENT.text to ""
+// to hide it. Visitors can dismiss it; changing the text shows it to them again.
+const ANNOUNCEMENT = {
+  text: "Saint Skullcaps are now available.",
+  linkText: "Shop now",
+  href: "apparel.html",
+};
+
+if (ANNOUNCEMENT.text) {
+  const storageKey = "saint-announcement-dismissed";
+  let dismissed = false;
+  try {
+    dismissed = window.localStorage.getItem(storageKey) === ANNOUNCEMENT.text;
+  } catch (error) {
+    // Storage can be blocked; the bar just shows every visit.
+  }
+
+  if (!dismissed) {
+    const bar = document.createElement("div");
+    bar.className = "announcement-bar";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Announcement");
+
+    const message = document.createElement("p");
+    message.textContent = `${ANNOUNCEMENT.text} `;
+    if (ANNOUNCEMENT.href) {
+      const link = document.createElement("a");
+      link.href = ANNOUNCEMENT.href;
+      link.textContent = ANNOUNCEMENT.linkText || "Learn more";
+      message.append(link);
+    }
+
+    const close = document.createElement("button");
+    close.type = "button";
+    close.className = "announcement-bar__close";
+    close.setAttribute("aria-label", "Dismiss announcement");
+    close.textContent = "\u00d7";
+    close.addEventListener("click", () => {
+      bar.remove();
+      try {
+        window.localStorage.setItem(storageKey, ANNOUNCEMENT.text);
+      } catch (error) {
+        // Dismissal just lasts for this page view.
+      }
+    });
+
+    bar.append(message, close);
+    document.body.prepend(bar);
+  }
+}
