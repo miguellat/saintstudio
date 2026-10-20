@@ -766,3 +766,13 @@ if (ANNOUNCEMENT.text) {
     document.body.prepend(bar);
   }
 }
+
+
+// The 3D logo (about 2.5 MB with its viewer library) is decorative, so load it
+// only after the rest of the page has finished loading.
+if (document.querySelector("model-viewer")) {
+  const loadModelViewer = () => import("./vendor/model-viewer.min.js");
+  const whenIdle = () => ("requestIdleCallback" in window ? window.requestIdleCallback(loadModelViewer) : window.setTimeout(loadModelViewer, 200));
+  if (document.readyState === "complete") whenIdle();
+  else window.addEventListener("load", whenIdle, { once: true });
+}
