@@ -3093,6 +3093,42 @@ body.cart-open {
   cursor: pointer;
 }
 
+.cart-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cart-form__title {
+  margin: 0;
+  font-weight: 700;
+}
+
+.cart-summary {
+  margin: 0;
+  white-space: pre-wrap;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cart-field {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.cart-field input,
+.cart-field textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 1rem;
+}
+
 @media (max-width: 900px) {
   .shop-hero__grid,
   .product-layout {
