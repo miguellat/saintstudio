@@ -755,6 +755,7 @@ if (ANNOUNCEMENT.text) {
     close.textContent = "\u00d7";
     close.addEventListener("click", () => {
       bar.remove();
+      document.documentElement.style.setProperty("--announcement-h", "0px");
       try {
         window.localStorage.setItem(storageKey, ANNOUNCEMENT.text);
       } catch (error) {
@@ -764,6 +765,10 @@ if (ANNOUNCEMENT.text) {
 
     bar.append(message, close);
     document.body.prepend(bar);
+    // Pages sized to the full screen (the home hero) subtract the bar's height.
+    const setBarHeight = (height) => document.documentElement.style.setProperty("--announcement-h", `${height}px`);
+    setBarHeight(bar.offsetHeight);
+    window.addEventListener("resize", () => bar.isConnected && setBarHeight(bar.offsetHeight));
   }
 }
 
