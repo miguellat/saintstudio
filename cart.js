@@ -102,7 +102,7 @@
         phone: details.phone,
         order: orderSummary(),
         subtotal: `${formatMoney(subtotal())} CAD`,
-        pickup: "SAINT Studio, 1154 Morningside Ave, Scarborough",
+        pickup: "SAINT Studio, 1154 Morningside Ave #212, Scarborough",
         note: details.note || "(none)",
       }),
     });
@@ -238,7 +238,7 @@
 
     const row = el("div", "cart-subtotal");
     row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave, Scarborough. Online payment is coming soon. Place your order and we'll confirm payment and pickup by email.");
+    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. Online payment is coming soon. Place your order and we'll confirm payment and pickup by email.");
     const checkoutButton = el("button", "solid-button cart-checkout", "Check Out");
     checkoutButton.type = "button";
     checkoutButton.addEventListener("click", () => {
@@ -275,7 +275,7 @@
 
     const row = el("div", "cart-subtotal");
     row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave, Scarborough. No payment is taken now.");
+    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. No payment is taken now.");
     const submit = el("button", "solid-button cart-checkout", "Place Order");
     submit.type = "submit";
     const back = el("button", "ghost-button cart-checkout", "Back to cart");

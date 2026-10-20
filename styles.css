@@ -3284,7 +3284,7 @@ body.cart-open {
 
 .review-grid {
   display: grid;
-  grid-template-columns: minmax(0, 560px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   margin: 2rem 0;
 }
