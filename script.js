@@ -18,7 +18,7 @@ const barberProfiles = [
     last: "Lat",
     name: "Jolo Lat",
     role: "Co-owner",
-    portrait: "assets/images/Joshua-Lat.jpg",
+    portrait: "assets/images/Jolo-Lat.jpg",
     instagram: "",
     bookingUrl: "https://getsquire.com/booking/book/saint-studio-toronto/barber/jolo-lat/services",
     description: "The other half of SAINT Studio, co-owning the brand alongside his brother. With 8+ years behind the chair, he's a master of both fades and scissor work -- the kind of barber you can always count on to leave you feeling fresh.",
