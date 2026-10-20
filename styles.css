@@ -3317,3 +3317,44 @@ body.cart-open {
 .reviews-section .ghost-button {
   margin: 0 12px 12px 0;
 }
+
+.faq-list {
+  max-width: 760px;
+  margin-top: 1.5rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.3));
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 1.1rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex: none;
+}
+
+.faq-item[open] summary::after {
+  content: "\2212";
+}
+
+.faq-item p {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+}
+
+.detail-row a {
+  color: inherit;
+}

@@ -276,7 +276,7 @@ function isExternalLink(link) {
   const href = link.getAttribute("href");
   if (!href || href.startsWith("#")) return false;
 
-  return /^(https?:|mailto:|tel:)/i.test(href);
+  return /^(https?:|mailto:)/i.test(href);
 }
 
 function openExternalLinksInNewTabs() {
@@ -407,9 +407,8 @@ function setupHorizontalScroll(scroller) {
 
 document.querySelectorAll(".barber-feature-scroll, [data-horizontal-scroll]").forEach(setupHorizontalScroll);
 
-// Set this to a form service URL (Formspree, Web3Forms, etc.) to send inquiries
-// straight to your inbox. Until then, forms open the visitor's email app.
-const FORM_ENDPOINT = "";
+// Contact form messages are sent straight to the studio inbox through Web3Forms.
+const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 const FORM_EMAIL = "saintstudiotoronto@gmail.com";
 
 document.querySelectorAll("[data-demo-form]").forEach((form) => {
@@ -687,5 +686,31 @@ if (visitSection) {
         if (label) label.textContent = original;
       }
     });
+  });
+}
+
+
+// Analytics (Google Analytics 4). Paste the Measurement ID (looks like G-XXXXXXXXXX)
+// to turn it on. While it is empty nothing is loaded or tracked.
+const GA_MEASUREMENT_ID = "";
+
+if (GA_MEASUREMENT_ID) {
+  const gaScript = document.createElement("script");
+  gaScript.async = true;
+  gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  document.head.append(gaScript);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", GA_MEASUREMENT_ID);
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href");
+    if (href.includes("getsquire.com/booking")) window.gtag("event", "book_appointment_click", { link_url: href });
+    else if (href.startsWith("tel:")) window.gtag("event", "call_click");
   });
 }
