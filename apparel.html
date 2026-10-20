@@ -61,34 +61,27 @@
     </header>
 
     <main id="main-content">
-      <section class="section">
-        <div class="container">
-          <div class="team-intro reveal">
-            <div>
-              <h1 class="page-title">Saint Apparel</h1>
-            </div>
-            <p class="lede">
-              Wear the studio. Hoodies, skullcaps, and chains from the SAINT Studio collection.
-            </p>
+      <section class="section shop-hero">
+        <div class="container shop-hero__grid">
+          <div class="shop-hero__copy reveal">
+            <p class="eyebrow">Saint Apparel</p>
+            <h1 class="page-title">Wear the studio.</h1>
+            <p class="lede">Hoodies, skullcaps, and chains from the SAINT Studio collection.</p>
+            <a class="solid-button" href="#shop">Shop All</a>
           </div>
+          <figure class="shop-hero__image reveal">
+            <img src="assets/images/saint-chain-gold.jpg" alt="Gold Saint logo pendant on a gold rope chain" />
+          </figure>
+        </div>
+      </section>
 
-          <div class="team-grid">
-            <div class="team-card apparel-card reveal">
-              <div class="apparel-placeholder" role="img" aria-label="Saint Hoodie photo coming soon"><span>Coming soon</span></div>
-              <h3>Saint Hoodie</h3>
-              <p>Price TBD</p>
-            </div>
-            <div class="team-card apparel-card reveal">
-              <div class="apparel-placeholder" role="img" aria-label="Saint Skullcap photo coming soon"><span>Coming soon</span></div>
-              <h3>Saint Skullcap</h3>
-              <p>Price TBD</p>
-            </div>
-            <div class="team-card apparel-card reveal">
-              <div class="apparel-placeholder" role="img" aria-label="Saint Chain photo coming soon"><span>Coming soon</span></div>
-              <h3>Saint Chain</h3>
-              <p>Price TBD</p>
-            </div>
-          </div>
+      <section class="section shop-section" id="shop">
+        <div class="container">
+          <h2 class="section-heading">Shop All</h2>
+          <div class="shop-grid" data-product-grid></div>
+          <noscript>
+            <p class="lede">Turn on JavaScript to browse the shop, or email saintstudiotoronto@gmail.com to order.</p>
+          </noscript>
         </div>
       </section>
     </main>
@@ -114,6 +107,9 @@
         </div>
       </div>
     </footer>
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script src="shop.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
