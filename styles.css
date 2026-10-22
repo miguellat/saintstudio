@@ -420,6 +420,33 @@ textarea {
   z-index: 4;
 }
 
+.hero-center {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+
+.hero-title {
+  margin: 0;
+  max-width: 90vw;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hero-phone {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hero-phone span {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .hero-scroll-cue {
   display: none;
 }
