@@ -9,6 +9,12 @@
   // Web3Forms public access key: orders are emailed to the inbox it was created with.
   const ORDER_ENDPOINT = "https://api.web3forms.com/submit";
   const ORDER_ACCESS_KEY = "dff7012d-792c-4037-bd2d-ac46ecccea3d";
+  // EmailJS (https://www.emailjs.com) emails the customer their confirmation.
+  // Fill these in from the EmailJS dashboard; while any is empty, confirmations are skipped.
+  const CONFIRM_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
+  const CONFIRM_SERVICE_ID = "service_9gc3b1j";
+  const CONFIRM_TEMPLATE_ID = "template_qck0jpo";
+  const CONFIRM_PUBLIC_KEY = "iJxpL6tf4tm41vCYA";
   const MAX_QTY = 10;
 
   const products = window.SAINT_PRODUCTS || [];
@@ -108,6 +114,32 @@
     });
     const result = await response.json().catch(() => ({}));
     if (!response.ok || result.success === false) throw new Error(result.message || "Request failed");
+  };
+
+  // Template variables: {{to_name}}, {{to_email}}, {{order}}, {{subtotal}}, {{pickup}}, {{note}}
+  const sendConfirmation = async (details, order, total) => {
+    if (!CONFIRM_SERVICE_ID || !CONFIRM_TEMPLATE_ID || !CONFIRM_PUBLIC_KEY) return;
+    try {
+      await fetch(CONFIRM_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: CONFIRM_SERVICE_ID,
+          template_id: CONFIRM_TEMPLATE_ID,
+          user_id: CONFIRM_PUBLIC_KEY,
+          template_params: {
+            to_name: details.name,
+            to_email: details.email,
+            order,
+            subtotal: total,
+            pickup: "SAINT Studio, 1154 Morningside Ave #212, Scarborough",
+            note: details.note || "(none)",
+          },
+        }),
+      });
+    } catch (error) {
+      // The order itself already went through; a failed confirmation must not block it.
+    }
   };
 
   // --- UI -------------------------------------------------------------------
@@ -294,7 +326,11 @@
       submit.textContent = "Sending...";
       status.textContent = "";
       try {
-        await sendOrder({ name: data.get("name"), email: data.get("email"), phone: data.get("phone"), note: data.get("note") });
+        const details = { name: data.get("name"), email: data.get("email"), phone: data.get("phone"), note: data.get("note") };
+        const order = orderSummary();
+        const total = `${formatMoney(subtotal())} CAD`;
+        await sendOrder(details);
+        await sendConfirmation(details, order, total);
         lines = [];
         view = "done";
         commit();
