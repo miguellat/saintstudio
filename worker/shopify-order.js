@@ -4,10 +4,34 @@
 // the order here and this worker (which holds the token as a secret) creates it.
 //
 // Variables (set in Cloudflare, see worker/README.md):
-//   SHOPIFY_STORE   e.g. "your-store.myshopify.com"
-//   SHOPIFY_TOKEN   Admin API access token (scope: write_orders)  [secret]
+//   SHOPIFY_STORE          e.g. "your-store.myshopify.com"
+//   SHOPIFY_CLIENT_ID      Dev Dashboard app client ID
+//   SHOPIFY_CLIENT_SECRET  Dev Dashboard app client secret  [secret]
+// Shopify no longer issues permanent tokens for new apps, so the worker trades the
+// client ID/secret for a token (valid 24 hours) and caches it.
 const ALLOWED_ORIGINS = ["https://www.saintstudio.ca", "https://saintstudio.ca"];
 const API_VERSION = "2025-01";
+
+let cachedToken = null;
+let cachedTokenExpiresAt = 0;
+
+async function getToken(env) {
+  if (cachedToken && Date.now() < cachedTokenExpiresAt - 60000) return cachedToken;
+  const response = await fetch(`https://${env.SHOPIFY_STORE}/admin/oauth/access_token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      grant_type: "client_credentials",
+      client_id: env.SHOPIFY_CLIENT_ID,
+      client_secret: env.SHOPIFY_CLIENT_SECRET,
+    }),
+  });
+  if (!response.ok) throw new Error(`Token request failed: ${response.status}`);
+  const { access_token, expires_in } = await response.json();
+  cachedToken = access_token;
+  cachedTokenExpiresAt = Date.now() + expires_in * 1000;
+  return cachedToken;
+}
 
 export default {
   async fetch(request, env) {
@@ -60,9 +84,15 @@ export default {
       },
     };
 
+    let token;
+    try {
+      token = await getToken(env);
+    } catch (error) {
+      return reply(502, { error: "Could not authenticate with Shopify" });
+    }
     const response = await fetch(`https://${env.SHOPIFY_STORE}/admin/api/${API_VERSION}/orders.json`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "X-Shopify-Access-Token": env.SHOPIFY_TOKEN },
+      headers: { "Content-Type": "application/json", "X-Shopify-Access-Token": token },
       body: JSON.stringify(payload),
     });
     if (!response.ok) return reply(502, { error: "Shopify rejected the order" });
