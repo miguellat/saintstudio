@@ -15,6 +15,8 @@
   const CONFIRM_SERVICE_ID = "service_9gc3b1j";
   const CONFIRM_TEMPLATE_ID = "template_qck0jpo";
   const CONFIRM_PUBLIC_KEY = "iJxpL6tf4tm41vCYA";
+  // Cloudflare Worker that creates the order in Shopify (see worker/README.md). Empty = skip.
+  const SHOPIFY_ORDER_URL = "";
   const MAX_QTY = 10;
 
   const products = window.SAINT_PRODUCTS || [];
@@ -139,6 +141,26 @@
       });
     } catch (error) {
       // The order itself already went through; a failed confirmation must not block it.
+    }
+  };
+
+  const sendToShopify = async (details) => {
+    if (!SHOPIFY_ORDER_URL) return;
+    try {
+      await fetch(SHOPIFY_ORDER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          customer: { name: details.name, email: details.email, phone: details.phone },
+          note: details.note || "",
+          items: lines.map((line) => {
+            const product = productById.get(line.id);
+            return { title: product.name, variant: line.variant, priceCents: product.price, qty: line.qty };
+          }),
+        }),
+      });
+    } catch (error) {
+      // The email order already went through; a Shopify failure must not block it.
     }
   };
 
@@ -330,6 +352,7 @@
         const order = orderSummary();
         const total = `${formatMoney(subtotal())} CAD`;
         await sendOrder(details);
+        await sendToShopify(details);
         await sendConfirmation(details, order, total);
         lines = [];
         view = "done";

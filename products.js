@@ -16,14 +16,17 @@ window.SAINT_PRODUCTS = [
     currency: "CAD",
     description: [
       "Black hoodie with a boxy silhouette and ribbed cuffs and hem.",
-      "The back carries the SAINT script and star in tonal black-on-black.",
+      "A small embroidered S logo sits on the chest and the SAINT script and star runs across the back, both tonal black-on-black.",
     ],
     details: [
       "Black",
-      "Tonal SAINT script and star on the back",
+      "Tonal S logo on the chest and SAINT script on the back",
       "Available in Small, Medium, and Large",
     ],
-    images: [{ src: "assets/images/saint-hoodie.jpg", alt: "Back of the black Saint Hoodie 001 with tonal Saint script and star" }],
+    images: [
+      { src: "assets/images/saint-hoodie-front.jpg", alt: "Front of the black Saint Hoodie 001 with a tonal embroidered S logo on the chest" },
+      { src: "assets/images/saint-hoodie.jpg", alt: "Back of the black Saint Hoodie 001 with tonal Saint script and star" },
+    ],
     options: [{ name: "Size", values: ["Small", "Medium", "Large"] }],
     shopifyVariantIds: {},
   },
@@ -35,10 +38,10 @@ window.SAINT_PRODUCTS = [
     currency: "CAD",
     description: [
       "Black knit skullcap with a folded cuff.",
-      "A small silver SAINT logo sits on the cuff.",
+      "A small white SAINT logo sits on the cuff.",
     ],
-    details: ["Black", "One size", "Small silver SAINT logo on the cuff"],
-    images: [{ src: "assets/images/saint-skullcap.jpg", alt: "Black Saint skullcap with a small silver SAINT logo on the cuff" }],
+    details: ["Black", "One size", "Small white SAINT logo on the cuff"],
+    images: [{ src: "assets/images/saint-skullcap.webp", alt: "Black Saint skullcap with a small white SAINT logo on the cuff" }],
     options: [],
     shopifyVariantIds: {},
   },
@@ -53,12 +56,8 @@ window.SAINT_PRODUCTS = [
       "Choose gold or silver.",
     ],
     details: ["SAINT logo pendant on a chain", "Available in gold and silver"],
-    images: [
-      { src: "assets/images/saint-chain-gold.jpg", alt: "Gold Saint logo pendant on a gold rope chain" },
-      { src: "assets/images/saint-chains.jpg", alt: "Gold and silver Saint logo pendant chains in a display tray" },
-    ],
-    // Selecting a colour swaps the gallery to the matching image index.
-    options: [{ name: "Colour", values: ["Gold", "Silver"], images: { Gold: 0, Silver: 1 } }],
+    images: [{ src: "assets/images/saint-chains.webp", alt: "Gold and silver Saint logo pendant chains on rope chains" }],
+    options: [{ name: "Colour", values: ["Gold", "Silver"] }],
     shopifyVariantIds: {},
   },
 ];
