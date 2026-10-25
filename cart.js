@@ -16,7 +16,7 @@
   const CONFIRM_TEMPLATE_ID = "template_qck0jpo";
   const CONFIRM_PUBLIC_KEY = "iJxpL6tf4tm41vCYA";
   // Cloudflare Worker that creates the order in Shopify (see worker/README.md). Empty = skip.
-  const SHOPIFY_ORDER_URL = "";
+  const SHOPIFY_ORDER_URL = "https://saint-orders.saintstudiotoronto.workers.dev/";
   const MAX_QTY = 10;
 
   const products = window.SAINT_PRODUCTS || [];
