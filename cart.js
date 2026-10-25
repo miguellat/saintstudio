@@ -1,8 +1,8 @@
 // Cart for Saint Apparel: header bag button, slide-out drawer, and storage.
 //
-// The cart lives in the visitor's browser (localStorage). Checkout is the one
-// piece to swap when Shopify is connected: replace the checkout form below with
-// a redirect to the Shopify checkout URL built from the cart lines.
+// The cart lives in the visitor's browser (localStorage). Checkout either sends
+// a pickup order (email + Shopify order bridge) or, when SHOPIFY_CHECKOUT_ENABLED
+// is on, redirects to Shopify's hosted checkout built from the cart lines.
 (() => {
   const STORAGE_KEY = "saint-cart-v1";
   const CHECKOUT_EMAIL = "saintstudiotoronto@gmail.com";
@@ -17,6 +17,11 @@
   const CONFIRM_PUBLIC_KEY = "iJxpL6tf4tm41vCYA";
   // Cloudflare Worker that creates the order in Shopify (see worker/README.md). Empty = skip.
   const SHOPIFY_ORDER_URL = "https://saint-orders.saintstudiotoronto.workers.dev/";
+  // Off switch for online payment. When true, "Check Out" sends the cart to Shopify's
+  // hosted checkout instead of the pickup order form. Turn on only after Shopify
+  // Payments is set up and the pickup location/address is correct in Shopify.
+  const SHOPIFY_CHECKOUT_ENABLED = false;
+  const SHOPIFY_STORE_URL = "https://ytwxye-hm.myshopify.com";
   const MAX_QTY = 10;
 
   const products = window.SAINT_PRODUCTS || [];
@@ -142,6 +147,17 @@
     } catch (error) {
       // The order itself already went through; a failed confirmation must not block it.
     }
+  };
+
+  // Shopify cart link: /cart/<variantId>:<qty>,... opens Shopify's checkout with these items.
+  // Returns null if any line has no Shopify variant ID, so the pickup form is used instead.
+  const shopifyCheckoutUrl = () => {
+    if (!SHOPIFY_CHECKOUT_ENABLED || lines.length === 0) return null;
+    const parts = lines.map((line) => {
+      const id = productById.get(line.id).shopifyVariantIds?.[line.variant];
+      return id ? `${id}:${line.qty}` : null;
+    });
+    return parts.every(Boolean) ? `${SHOPIFY_STORE_URL}/cart/${parts.join(",")}` : null;
   };
 
   const sendToShopify = async (details) => {
@@ -292,10 +308,21 @@
 
     const row = el("div", "cart-subtotal");
     row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. Online payment is coming soon. Place your order and we'll confirm payment and pickup by email.");
+    const onlineUrl = shopifyCheckoutUrl();
+    const note = el(
+      "p",
+      "cart-note",
+      onlineUrl
+        ? "Pay securely online with Shopify. Pickup at SAINT Studio, 1154 Morningside Ave #212, Scarborough."
+        : "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. Online payment is coming soon. Place your order and we'll confirm payment and pickup by email.",
+    );
     const checkoutButton = el("button", "solid-button cart-checkout", "Check Out");
     checkoutButton.type = "button";
     checkoutButton.addEventListener("click", () => {
+      if (onlineUrl) {
+        window.location.href = onlineUrl;
+        return;
+      }
       view = "checkout";
       render();
     });

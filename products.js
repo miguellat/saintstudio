@@ -4,9 +4,9 @@
 // every product page, and the cart all read from it. Prices are in cents (CAD)
 // so the cart never does floating-point math on money.
 //
-// Connecting Shopify later: replace this array with a Storefront API fetch that
-// returns the same shape, and fill in each variant's Shopify ID in
-// `shopifyVariantIds` (keyed by the variant label, e.g. "Large" or "Gold").
+// `shopifyVariantIds` holds each variant's Shopify ID, keyed by the variant label
+// (e.g. "Large" or "Gold"; "" for a product with no options). cart.js uses them to
+// build the Shopify checkout link when SHOPIFY_CHECKOUT_ENABLED is on.
 window.SAINT_PRODUCTS = [
   {
     id: "saint-hoodie-001",
@@ -28,7 +28,7 @@ window.SAINT_PRODUCTS = [
       { src: "assets/images/saint-hoodie.jpg", alt: "Back of the black Saint Hoodie 001 with tonal Saint script and star" },
     ],
     options: [{ name: "Size", values: ["Small", "Medium", "Large"] }],
-    shopifyVariantIds: {},
+    shopifyVariantIds: { Small: "67864952602993", Medium: "67864952635761", Large: "67864952668529" },
   },
   {
     id: "saint-skullcaps",
@@ -43,7 +43,7 @@ window.SAINT_PRODUCTS = [
     details: ["Black", "One size", "Small white SAINT logo on the cuff"],
     images: [{ src: "assets/images/saint-skullcap.webp", alt: "Black Saint skullcap with a small white SAINT logo on the cuff" }],
     options: [],
-    shopifyVariantIds: {},
+    shopifyVariantIds: { "": "67864952734065" },
   },
   {
     id: "saint-chains",
@@ -58,6 +58,6 @@ window.SAINT_PRODUCTS = [
     details: ["SAINT logo pendant on a chain", "Available in gold and silver"],
     images: [{ src: "assets/images/saint-chains.webp", alt: "Gold and silver Saint logo pendant chains on rope chains" }],
     options: [{ name: "Colour", values: ["Gold", "Silver"] }],
-    shopifyVariantIds: {},
+    shopifyVariantIds: { Gold: "67864952832369", Silver: "67864952865137" },
   },
 ];
