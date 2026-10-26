@@ -36,6 +36,9 @@
     return labels;
   };
 
+  const isSoldOut = (product, variant) => (product.soldOut || []).includes(variant);
+  const allSoldOut = (product) => variantsFor(product).every((variant) => isSoldOut(product, variant));
+
   const clampQty = (value) => Math.max(1, Math.min(MAX_QTY, Math.floor(Number(value)) || 1));
   const lineKey = (id, variant) => `${id}|${variant}`;
 
@@ -47,7 +50,13 @@
       const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
       if (!Array.isArray(parsed)) return [];
       return parsed
-        .filter((line) => line && productById.has(line.id) && variantsFor(productById.get(line.id)).includes(line.variant))
+        .filter(
+          (line) =>
+            line &&
+            productById.has(line.id) &&
+            variantsFor(productById.get(line.id)).includes(line.variant) &&
+            !isSoldOut(productById.get(line.id), line.variant),
+        )
         .map((line) => ({ id: line.id, variant: line.variant, qty: clampQty(line.qty) }));
     } catch (error) {
       return [];
@@ -72,7 +81,7 @@
 
   const add = (id, variant = "", qty = 1) => {
     const product = productById.get(id);
-    if (!product || !variantsFor(product).includes(variant)) return false;
+    if (!product || !variantsFor(product).includes(variant) || isSoldOut(product, variant)) return false;
     const existing = lines.find((line) => lineKey(line.id, line.variant) === lineKey(id, variant));
     if (existing) existing.qty = clampQty(existing.qty + qty);
     else lines.push({ id, variant, qty: clampQty(qty) });
@@ -476,7 +485,7 @@
     });
   };
 
-  window.SaintCart = { add, setQty, remove, open, close, count, subtotal, formatMoney, variantsFor };
+  window.SaintCart = { add, setQty, remove, open, close, count, subtotal, formatMoney, variantsFor, isSoldOut, allSoldOut };
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();

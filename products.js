@@ -7,6 +7,9 @@
 // `shopifyVariantIds` holds each variant's Shopify ID, keyed by the variant label
 // (e.g. "Large" or "Gold"; "" for a product with no options). cart.js uses them to
 // build the Shopify checkout link when SHOPIFY_CHECKOUT_ENABLED is on.
+//
+// `soldOut` lists the variant labels that are out of stock. A product whose every
+// variant is listed shows as Sold out; remove a label to put it back on sale.
 window.SAINT_PRODUCTS = [
   {
     id: "saint-hoodie-001",
@@ -28,6 +31,7 @@ window.SAINT_PRODUCTS = [
       { src: "assets/images/saint-hoodie.jpg", alt: "Back of the black Saint Hoodie 001 with tonal Saint script and star" },
     ],
     options: [{ name: "Size", values: ["Small", "Medium", "Large"] }],
+    soldOut: ["Small", "Medium", "Large"],
     shopifyVariantIds: { Small: "67864952602993", Medium: "67864952635761", Large: "67864952668529" },
   },
   {
@@ -58,6 +62,7 @@ window.SAINT_PRODUCTS = [
     details: ["SAINT logo pendant on a chain", "Available in gold and silver"],
     images: [{ src: "assets/images/saint-chains.webp", alt: "Gold and silver Saint logo pendant chains on rope chains" }],
     options: [{ name: "Colour", values: ["Gold", "Silver"] }],
+    soldOut: ["Silver"],
     shopifyVariantIds: { Gold: "67864952832369", Silver: "67864952865137" },
   },
 ];

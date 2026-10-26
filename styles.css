@@ -3463,3 +3463,45 @@ body.cart-open {
   clip: rect(0 0 0 0);
   white-space: nowrap;
 }
+
+/* Sold-out products and variants */
+.product-card__media {
+  position: relative;
+}
+
+.product-card.is-sold-out .product-card__media img {
+  opacity: 0.55;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--text);
+  color: var(--inverse);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.option-pill.is-sold-out,
+.option-pill.is-sold-out input {
+  cursor: not-allowed;
+}
+
+.option-pill.is-sold-out span {
+  border-style: dashed;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.option-pill.is-sold-out:hover span {
+  border-color: var(--line-strong);
+}
+
+[data-add-to-cart]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -23,6 +23,10 @@
     image.alt = product.images[0].alt;
     image.loading = "lazy";
     media.append(image);
+    if (cart.allSoldOut(product)) {
+      card.classList.add("is-sold-out");
+      media.append(el("span", "product-card__badge", "Sold out"));
+    }
 
     card.append(media, el("h3", "product-card__name", product.name), el("p", "product-card__price", cart.formatMoney(product.price)));
     return card;
@@ -114,7 +118,13 @@
         note.textContent = "";
         if (option.images && option.images[value] !== undefined) showImage(option.images[value]);
       });
-      label.append(input, el("span", "", value));
+      if (product.options.length === 1 && cart.isSoldOut(product, value)) {
+        input.disabled = true;
+        label.classList.add("is-sold-out");
+        label.append(input, el("span", "", `${value} (sold out)`));
+      } else {
+        label.append(input, el("span", "", value));
+      }
       values.append(label);
     });
 
@@ -148,6 +158,12 @@
   // Add to cart
   const addButton = page.querySelector("[data-add-to-cart]");
   let resetTimer;
+
+  if (cart.allSoldOut(product)) {
+    addButton.disabled = true;
+    addButton.textContent = "Sold Out";
+    page.querySelector("[data-product-price]").textContent += " · Sold out";
+  }
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
