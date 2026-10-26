@@ -20,7 +20,7 @@
   // Off switch for online payment. When true, "Check Out" sends the cart to Shopify's
   // hosted checkout instead of the pickup order form. Turn on only after Shopify
   // Payments is set up and the pickup location/address is correct in Shopify.
-  const SHOPIFY_CHECKOUT_ENABLED = false;
+  const SHOPIFY_CHECKOUT_ENABLED = true;
   const SHOPIFY_STORE_URL = "https://ytwxye-hm.myshopify.com";
   const MAX_QTY = 10;
 
