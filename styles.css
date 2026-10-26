@@ -529,10 +529,27 @@ textarea {
   color: #0a0a0a;
 }
 
-.pill-button:hover,
-.solid-button:hover,
-.ghost-button:hover {
-  transform: translateY(-2px);
+.pill-button,
+.solid-button,
+.ghost-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Lift on hover only where a real hover exists. On phones the first tap counts as a
+   hover, and the button moving under the finger makes it need a second tap. */
+@media (hover: hover) {
+  .pill-button:hover,
+  .solid-button:hover,
+  .ghost-button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.pill-button:active,
+.solid-button:active,
+.ghost-button:active {
+  transform: scale(0.98);
 }
 
 .solid-button {
@@ -2957,6 +2974,7 @@ dialog::backdrop {
   display: flex;
   flex-direction: column;
   width: min(440px, 100vw);
+  height: 100dvh;
   background: var(--bg);
   color: var(--text);
   box-shadow: var(--shadow);
@@ -2999,7 +3017,7 @@ body.cart-open {
 .cart-drawer__footer {
   display: grid;
   gap: 14px;
-  padding: 20px 24px 24px;
+  padding: 20px 24px max(24px, env(safe-area-inset-bottom));
   border-top: 1px solid var(--line);
 }
 
