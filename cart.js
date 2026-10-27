@@ -1,24 +1,12 @@
 // Cart for Saint Apparel: header bag button, slide-out drawer, and storage.
 //
-// The cart lives in the visitor's browser (localStorage). "Pay in Store" emails a
-// pickup order (nothing is created in Shopify; it is rung up as a Quick Sale at
-// pickup). When SHOPIFY_CHECKOUT_ENABLED is on, "Pay Online" also redirects to
-// Shopify's hosted checkout built from the cart lines.
+// The cart lives in the visitor's browser (localStorage). "Check Out" redirects to
+// Shopify's hosted checkout built from the cart lines, where the customer picks
+// local pickup (free) or shipping (flat $10 CAD) and pays.
 (() => {
   const STORAGE_KEY = "saint-cart-v1";
-  const CHECKOUT_EMAIL = "saintstudiotoronto@gmail.com";
-  // Web3Forms public access key: orders are emailed to the inbox it was created with.
-  const ORDER_ENDPOINT = "https://api.web3forms.com/submit";
-  const ORDER_ACCESS_KEY = "dff7012d-792c-4037-bd2d-ac46ecccea3d";
-  // EmailJS (https://www.emailjs.com) emails the customer their confirmation.
-  // Fill these in from the EmailJS dashboard; while any is empty, confirmations are skipped.
-  const CONFIRM_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
-  const CONFIRM_SERVICE_ID = "service_9gc3b1j";
-  const CONFIRM_TEMPLATE_ID = "template_qck0jpo";
-  const CONFIRM_PUBLIC_KEY = "iJxpL6tf4tm41vCYA";
-  // Off switch for online payment. When true, "Pay Online" sends the cart to Shopify's
-  // hosted checkout, alongside the "Pay in Store" pickup form. Turn on only after Shopify
-  // Payments is set up and the pickup location/address is correct in Shopify.
+  // Off switch for checkout. When true, "Check Out" sends the cart to Shopify's hosted
+  // checkout. Pickup and shipping options are configured in Shopify.
   const SHOPIFY_CHECKOUT_ENABLED = true;
   const SHOPIFY_STORE_URL = "https://ytwxye-hm.myshopify.com";
   const MAX_QTY = 10;
@@ -101,64 +89,8 @@
     commit();
   };
 
-  const orderSummary = () =>
-    lines
-      .map((line) => {
-        const product = productById.get(line.id);
-        const label = line.variant ? `${product.name} (${line.variant})` : product.name;
-        return `- ${label} x${line.qty}: ${formatMoney(product.price * line.qty)}`;
-      })
-      .join("\n");
-
-  const sendOrder = async (details) => {
-    const response = await fetch(ORDER_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({
-        access_key: ORDER_ACCESS_KEY,
-        subject: `Saint Apparel order from ${details.name}`,
-        from_name: "SAINT Apparel Shop",
-        name: details.name,
-        email: details.email,
-        phone: details.phone,
-        order: orderSummary(),
-        subtotal: `${formatMoney(subtotal())} CAD`,
-        pickup: "SAINT Studio, 1154 Morningside Ave #212, Scarborough",
-        note: details.note || "(none)",
-      }),
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || result.success === false) throw new Error(result.message || "Request failed");
-  };
-
-  // Template variables: {{to_name}}, {{to_email}}, {{order}}, {{subtotal}}, {{pickup}}, {{note}}
-  const sendConfirmation = async (details, order, total) => {
-    if (!CONFIRM_SERVICE_ID || !CONFIRM_TEMPLATE_ID || !CONFIRM_PUBLIC_KEY) return;
-    try {
-      await fetch(CONFIRM_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          service_id: CONFIRM_SERVICE_ID,
-          template_id: CONFIRM_TEMPLATE_ID,
-          user_id: CONFIRM_PUBLIC_KEY,
-          template_params: {
-            to_name: details.name,
-            to_email: details.email,
-            order,
-            subtotal: total,
-            pickup: "SAINT Studio, 1154 Morningside Ave #212, Scarborough",
-            note: details.note || "(none)",
-          },
-        }),
-      });
-    } catch (error) {
-      // The order itself already went through; a failed confirmation must not block it.
-    }
-  };
-
   // Shopify cart link: /cart/<variantId>:<qty>,... opens Shopify's checkout with these items.
-  // Returns null if any line has no Shopify variant ID, so the pickup form is used instead.
+  // Returns null if checkout is off or any line has no Shopify variant ID.
   const shopifyCheckoutUrl = () => {
     if (!SHOPIFY_CHECKOUT_ENABLED || lines.length === 0) return null;
     const parts = lines.map((line) => {
@@ -200,8 +132,7 @@
   let cartButton;
   let badge;
   let lastTrigger = null;
-  let view = "cart"; // "cart" | "checkout" | "done"
-
+  
   const renderLine = (line) => {
     const product = productById.get(line.id);
     const item = el("li", "cart-line");
@@ -258,24 +189,7 @@
     drawerBody.textContent = "";
     drawerFooter.textContent = "";
 
-    if (view === "done") {
-      const done = el("div", "cart-empty");
-      done.append(el("p", "cart-empty__title", "Order sent. Thank you!"));
-      done.append(el("p", "cart-note", "We got your order and will email you to confirm pickup. You pay in store."));
-      const back = el("button", "ghost-button", "Close");
-      back.type = "button";
-      back.addEventListener("click", () => {
-        view = "cart";
-        close();
-        render();
-      });
-      done.append(back);
-      drawerBody.append(done);
-      return;
-    }
-
     if (lines.length === 0) {
-      view = "cart";
       const empty = el("div", "cart-empty");
       empty.append(el("p", "cart-empty__title", "Your cart is empty."));
       const shop = el("a", "ghost-button", "Shop Saint Apparel");
@@ -285,109 +199,21 @@
       return;
     }
 
-    if (view === "checkout") {
-      renderCheckout();
-      return;
-    }
-
     const list = el("ul", "cart-lines");
     lines.forEach((line) => list.append(renderLine(line)));
     drawerBody.append(list);
 
     const row = el("div", "cart-subtotal");
     row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const onlineUrl = shopifyCheckoutUrl();
-    const note = el(
-      "p",
-      "cart-note",
-      onlineUrl
-        ? "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. Pay online now, or pay when you pick up."
-        : "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. Place your order and pay in store when you pick up.",
-    );
-    const goToStoreForm = () => {
-      view = "checkout";
-      render();
-    };
-    if (onlineUrl) {
-      const payOnline = el("button", "solid-button cart-checkout", "Pay Online");
-      payOnline.type = "button";
-      payOnline.addEventListener("click", () => {
-        window.location.href = onlineUrl;
-      });
-      const payInStore = el("button", "ghost-button cart-checkout", "Pay in Store");
-      payInStore.type = "button";
-      payInStore.addEventListener("click", goToStoreForm);
-      drawerFooter.append(row, note, payOnline, payInStore);
-      return;
-    }
-    const checkoutButton = el("button", "solid-button cart-checkout", "Place Order (Pay in Store)");
+    const checkoutUrl = shopifyCheckoutUrl();
+    const note = el("p", "cart-note", "Free pickup at SAINT Studio, 1154 Morningside Ave #212, Scarborough, or shipping in Canada for $10 CAD. Choose at checkout.");
+    const checkoutButton = el("button", "solid-button cart-checkout", "Check Out");
     checkoutButton.type = "button";
-    checkoutButton.addEventListener("click", goToStoreForm);
+    checkoutButton.disabled = !checkoutUrl;
+    checkoutButton.addEventListener("click", () => {
+      if (checkoutUrl) window.location.href = checkoutUrl;
+    });
     drawerFooter.append(row, note, checkoutButton);
-  };
-
-  const field = (labelText, name, attrs = {}, tag = "input") => {
-    const wrap = el("label", "cart-field");
-    wrap.append(el("span", "", labelText));
-    const input = el(tag);
-    input.name = name;
-    Object.entries(attrs).forEach(([key, value]) => input.setAttribute(key, value));
-    wrap.append(input);
-    return wrap;
-  };
-
-  const renderCheckout = () => {
-    const form = el("form", "cart-form");
-    form.noValidate = false;
-    const summary = el("pre", "cart-summary", orderSummary());
-    form.append(
-      el("p", "cart-form__title", "Your order"),
-      summary,
-      field("Name", "name", { required: "", autocomplete: "name" }),
-      field("Email", "email", { type: "email", required: "", autocomplete: "email" }),
-      field("Phone", "phone", { type: "tel", required: "", autocomplete: "tel" }),
-      field("Note (optional)", "note", { rows: "2" }, "textarea"),
-    );
-    const status = el("p", "cart-note cart-form__status");
-    status.setAttribute("role", "status");
-
-    const row = el("div", "cart-subtotal");
-    row.append(el("span", "", "Subtotal"), el("strong", "", `${formatMoney(subtotal())} CAD`));
-    const note = el("p", "cart-note", "Pickup only at SAINT Studio, 1154 Morningside Ave #212, Scarborough. You pay in store when you pick up. No payment is taken now.");
-    const submit = el("button", "solid-button cart-checkout", "Place Order");
-    submit.type = "submit";
-    const back = el("button", "ghost-button cart-checkout", "Back to cart");
-    back.type = "button";
-    back.addEventListener("click", () => {
-      view = "cart";
-      render();
-    });
-    form.append(row, note, status, submit, back);
-    drawerBody.append(form);
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const data = new FormData(form);
-      submit.disabled = true;
-      submit.textContent = "Sending...";
-      status.textContent = "";
-      try {
-        const details = { name: data.get("name"), email: data.get("email"), phone: data.get("phone"), note: data.get("note") };
-        const order = orderSummary();
-        const total = `${formatMoney(subtotal())} CAD`;
-        await sendOrder(details);
-        await sendConfirmation(details, order, total);
-        lines = [];
-        view = "done";
-        commit();
-      } catch (error) {
-        submit.disabled = false;
-        submit.textContent = "Place Order";
-        status.textContent = `Something went wrong. Please try again or email us at ${CHECKOUT_EMAIL}.`;
-      }
-    });
-    const firstInput = form.querySelector("input");
-    if (firstInput) firstInput.focus();
   };
 
   const focusables = () =>
@@ -405,7 +231,6 @@
 
   const close = () => {
     if (!drawer || !drawer.classList.contains("is-open")) return;
-    if (view !== "cart" && (view === "done" || lines.length === 0)) view = "cart";
     drawer.classList.remove("is-open");
     overlay.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
